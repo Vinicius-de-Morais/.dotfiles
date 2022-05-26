@@ -1,31 +1,16 @@
 #!/usr/bin/env bash
 
-
-init_check(){
-    #It checks if it's the first time use.
-    echo -e "\n\nHello, it`s your first time here let`s set up"
-    echo -e "Using Vinicius-de-Morais dotfiles repository"
-    DOT_REPO="https://github.com/Vinicius-de-Morais/dotfiles.git"
-
-    read -p "Where i should clone $(basename "${DOT_REPO}") (${HOME}/..):" -r DOT_DEST
-    DOT_DEST=${DOT_DEST:-$HOME}
-
-    if [[ -d "$HOME/$DOT_DEST" ]]; then
-        #initial setup
-        if git -C "${HOME}/${DOT_DEST}" clone "${DOT_REPO}"; then
-            add_env "$DOT_REPO" "$DOT_DEST"
-            echo -e "\ndotman successfully configured"
-            goodbye
-        else
-            echo -e "\n$DOT_REPO Unavailable. Exiting"
-			exit 1
-        fi
+create_files_links(){
+    echo -e "\n\n Now let set up this"
+    read -p 'Do you want to update apt-get? y/n' -r ANSWER
+    echo -e "$ANSWER"
+    if [ "$ANSWER" = "y" ]; then
+        apt-get update
+        cd ~/.dotfiles
+        ln -s ~/.dotfiles/.zshrc ~/.zshrc
+        ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
     else
-        #repo_check
-        echo -e "\n$DOT_DEST Not a Valid directory"
-		exit 1
-        #manage
-
+        echo -e "something wrong"
     fi
 }
-init_check
+create_files_links
