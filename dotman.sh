@@ -2,7 +2,7 @@
 
 
 init_check(){
-    #It checks if it's the first time use
+    #It checks if it's the first time use.
     echo -e "\n\nHello, it`s your first time here let`s set up"
     echo -e "Using Vinicius-de-Morais dotfiles repository"
     DOT_REPO="https://github.com/Vinicius-de-Morais/dotfiles.git"
