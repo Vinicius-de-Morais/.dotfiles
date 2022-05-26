@@ -15,4 +15,4 @@ Then use the command to be able to execute the dotman file
     
 After that to run the file use
 
-    ./dotman.sh
+    sudo ./dotman.sh
