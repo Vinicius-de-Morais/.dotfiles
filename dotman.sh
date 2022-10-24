@@ -15,8 +15,8 @@ create_files_links() {
         source ~/.zsh-nvm/zsh-nvm.plugin.zsh
         
         # add zsh autosuggestions
-        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-        source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+        git clone https://github.com/zsh-users/zsh-autosuggestions 
+        ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
         rm -rf .zshrc
         rm -rf .gitconfig
