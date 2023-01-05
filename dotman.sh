@@ -7,11 +7,17 @@ create_files_links() {
     if [ "$ANSWER" = "y" ]; then
         apt-get update
         sudo apt install zsh
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        y
+        sh -c -y "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+        # add nvm
         git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
         source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+        
+        # add zsh autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions 
+        ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
+        cd
         rm -rf .zshrc
         rm -rf .gitconfig
         cd ~/.dotfiles
