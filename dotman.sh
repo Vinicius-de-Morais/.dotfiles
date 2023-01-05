@@ -6,6 +6,7 @@ create_files_links() {
     echo -e "$ANSWER"
     if [ "$ANSWER" = "y" ]; then
         apt-get update
+        sudo apt update
         sudo apt install zsh
         sh -c -y "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -27,6 +28,13 @@ create_files_links() {
         source .zshrc
         source .gitconfig
         
+        sudo apt install android-sdk
+
+        mkdir development
+        cd development
+        git clone git@github.com:Vinicius-de-Morais/reactNative
+
+
         goodbye
 
     elif [ "$ANSWER" = "n" ]; then
