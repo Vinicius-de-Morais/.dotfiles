@@ -5,10 +5,9 @@ create_files_links() {
     read -p 'Do you want to install some apps? y/n' -r ANSWER
     echo -e "$ANSWER"
     if [ "$ANSWER" = "y" ]; then
-        apt-get update
-        sudo apt install zsh
+        sudo apt-get update
+        sudo apt install zsh -y
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        y
         
         # add nvm
         git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
@@ -17,12 +16,13 @@ create_files_links() {
         # add zsh autosuggestions
         git clone https://github.com/zsh-users/zsh-autosuggestions 
         ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
+	    
+        cd ~
         rm -rf .zshrc
         rm -rf .gitconfig
-        cd ~/.dotfiles
-        ln -s ~/.dotfiles/.zshrc ~/.zshrc
-        ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+        cd .dotfiles
+        ln -s .dotfiles/.zshrc ~/.zshrc
+        ln -s .dotfiles/.gitconfig ~/.gitconfig
         cd
         source .zshrc
         source .gitconfig
