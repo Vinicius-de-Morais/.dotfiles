@@ -16,8 +16,8 @@ create_files_links() {
         # add zsh autosuggestions
         git clone https://github.com/zsh-users/zsh-autosuggestions 
         ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	    
-        cd ~
+
+        cd
         rm -rf .zshrc
         rm -rf .gitconfig
         cd .dotfiles
@@ -27,6 +27,13 @@ create_files_links() {
         source .zshrc
         source .gitconfig
         
+        sudo apt install android-sdk
+
+        mkdir development
+        cd development
+        git clone git@github.com:Vinicius-de-Morais/reactNative
+
+
         goodbye
 
     elif [ "$ANSWER" = "n" ]; then
